@@ -1,0 +1,16 @@
+---
+bgp:
+  site: SJC1
+  as: 63086
+  groups:
+    TRANSIT:
+      - as: 3356
+        addr: 4.15.122.17
+        name: LEVEL3
+        import:
+        export:
+      - as: 2914
+        addr: 128.241.1.189
+        name: NTT
+        import:
+        export:

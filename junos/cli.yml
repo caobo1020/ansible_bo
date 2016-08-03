@@ -1,0 +1,25 @@
+---
+- hosts: edge
+  gather_facts: no
+  vars:
+    cmds: ['show version']
+  connection: local
+
+  tasks:
+  - name: OBTAIN LOGIN CREDENTIALS
+    include_vars: ../secrets.yaml
+
+  - name: DEFINE PROVIDER
+    set_fact:
+      provider:
+        host: "{{ inventory_hostname }}"
+        username: "{{ creds['username'] }}"
+        password: "{{ creds['password'] }}"
+
+  - name: RUN 'command'
+    junos_command:
+      provider: "{{ provider }}"
+      commands: "{{ cmds }}"
+    register: output
+
+  - debug: var=output.stdout

@@ -1,0 +1,4 @@
+---
+- name: bgp template building
+  template: src=bgp.conf dest={{ build_dir}}/{{ inventory_hostname }}_bgp.conf
+
