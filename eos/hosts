@@ -1,0 +1,11 @@
+[eos]
+lab1-7060-spine1
+lab1-7060-leaf1
+
+#[superspine]
+#lab1-superspine1
+#lab1-superspine2
+
+#[spine]
+#lab1-spine1
+#lab1-spine2

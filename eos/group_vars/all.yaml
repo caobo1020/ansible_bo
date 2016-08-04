@@ -1,0 +1,7 @@
+---
+pkg_dir: /usr/local/junos/packages
+log_dir: logs
+build_dir: build
+
+domain_name: prod.uber.com
+

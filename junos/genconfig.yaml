@@ -1,0 +1,22 @@
+---
+- name: Creating build dir for each host
+  hosts: all
+  connection: local
+  gather_facts: no
+
+  tasks:
+    - set_fact: 
+        build_dir: "{{ build_dir }}/{{ inventory_hostname }}"
+    - name: remove host build directory
+      file: path={{ build_dir }} state=absent
+    - name: create host build directory
+      file: path={{ build_dir }} state=directory
+
+- name: Generate templates for each device by roles
+  hosts: all
+  connection: local
+  gather_facts: no
+
+  roles:
+    - edge
+

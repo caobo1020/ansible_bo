@@ -1,0 +1,24 @@
+---
+- name: demo of eos command
+  hosts: eos
+  connection: local
+  gather_facts: no
+
+  tasks:
+    - name: OBTAIN LOGIN CREDENTIALS
+      include_vars: ../eos_secret.yaml
+
+    - name: RUN COMMAND
+      eos_command:
+        commands:
+          - show version
+        provider: "{{ cli }}"
+      register: output
+
+    - debug: var=output.stdout
+
+    - name: save the output to a file
+      copy:
+        content: "{{ output.stdout[0] }}"
+        dest: /tmp/output.txt
+
